@@ -1,0 +1,9 @@
+spring:
+  liquibase:
+    enabled: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pricing_service
+    username: developer
+    password: developer
+    driver-class-name: org.postgresql.Driver

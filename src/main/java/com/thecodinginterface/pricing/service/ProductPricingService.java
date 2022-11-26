@@ -26,27 +26,4 @@ public class ProductPricingService {
                 cmd.getStart()
         ));
     }
-
-    public ProductPriceEntity fetchProductPrice(long productId) {
-        ProductPriceEntity currPrice = null;
-        ProductPricingEntity nextPrice = null;
-        var now = OffsetDateTime.now();
-
-        var prices = pricingRepo.findByProductIdOrderByStartDesc(productId);
-        for (ProductPricingEntity price : prices) {
-            if (price.getStart().isBefore(now)) {
-                currPrice = new ProductPriceEntity();
-                currPrice.setProductId(price.getProductId());
-                currPrice.setPrice(price.getPrice());
-                break;
-            }
-            nextPrice = price;
-        }
-
-        if (nextPrice != null) {
-            currPrice.setEnd(nextPrice.getStart());
-        }
-
-        return currPrice;
-    }
 }

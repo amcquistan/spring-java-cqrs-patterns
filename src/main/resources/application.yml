@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: pricing-service
   liquibase:
     enabled: true
 
@@ -7,3 +9,22 @@ spring:
     username: developer
     password: developer
     driver-class-name: org.postgresql.Driver
+
+  kafka:
+    bootstrap-servers: "localhost:9092,localhost:9093"
+
+kafka-topics:
+  backoff:
+    initial-interval: 600ms
+    max-interval: 90s
+    # 5 retries 204 seconds (retries for just over 3 mins then dumps to DLT)
+    max-retries: 3
+    multiplier: 4
+  dlt-suffix: ".DLT"
+  partitions: 3
+  replicas: 3
+  pricing: "pricing.events"
+
+redis:
+  host: localhost
+  port: 6379

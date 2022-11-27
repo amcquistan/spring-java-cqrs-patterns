@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: changelog-0.3
+      author: adam
+      changes:
+        - sqlFile:
+            dbms: 'postgresql'
+            encoding: UTF-8
+            path: changelog/0.3/db-script-0.3.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true

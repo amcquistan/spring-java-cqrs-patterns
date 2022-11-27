@@ -22,7 +22,7 @@ public class ProductPriceController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void update(@RequestBody UpdatePriceCommand cmd) {
-        productPricingService.savePriceUpdate(cmd);
+        productPricingService.savePricingUpdate(cmd);
     }
 
     @GetMapping("/{productId}")
